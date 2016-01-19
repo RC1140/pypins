@@ -17,10 +17,12 @@
 				<div class="post-content">
 					<ul class="post-list">
 						{% for line in lines %}
-						<li>
-							<span>{{ sl.users.info(line.message.user).body.user.name }} : </span>
-							<span>{{ line.message.text }}</span>
-						</li>
+							{% if line.message %}
+								<li>
+									<span><b>{{ users[line.message.user] }}</b> : </span>
+									<span>{{ line.message.text }}</span>									
+								</li>
+							{% endif %}
 						{% endfor %}
 					</ul>
 				</div>
