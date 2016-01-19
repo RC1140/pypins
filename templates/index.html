@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pypin - What about second breakfast</title>
+		<link rel="stylesheet" href="/static/main.css">
+	</head>
+
+	<body>
+		<header class="site-header">
+			<a class="site-title" href="/">Pypin</a>
+		</header>
+		<div class="page-content">
+			<article class="post">
+				<div class="post-content">
+					<ul class="post-list">
+						{% for line in lines %}
+						<li>
+							<span>{{ sl.users.info(line.message.user).body.user.name }} : </span>
+							<span>{{ line.message.text }}</span>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</article>
+		</div>
+	</body>
+</html>
