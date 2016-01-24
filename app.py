@@ -1,6 +1,7 @@
 from flask import Flask, render_template, g
 from slacker import Slacker
 import os
+import datetime
 
 app = Flask(__name__)
 app.debug = True
@@ -17,6 +18,19 @@ def setup():
     for u in immutableUsers:
         userLookup[u['id']] = u['name']
     return userLookup
+
+@app.template_filter('tstodt')
+def timestamp_to_datetime(s):
+    uniqueTsParts = s.split('.')
+    if len(uniqueTsParts) > 0:
+        return datetime.datetime.fromtimestamp(
+            int(uniqueTsParts[0])
+        ).strftime('%Y-%m-%d')
+    else:
+        return datetime.datetime.fromtimestamp(
+            int(s)
+        ).strftime('%Y-%m-%d')
+ 
 
 @app.route("/")
 def index():    

@@ -19,8 +19,8 @@
 						{% for line in lines %}
 							{% if line.message %}
 								<li>
-									<span><b>{{ users[line.message.user] }}</b> : </span>
-									<span>{{ line.message.text }}</span>									
+								<span><b>[ {{ line.message.ts | tstodt }} ] {{ users[line.message.user] }}</b> : </span>
+									<span>{{ line.message.text }}</span>
 								</li>
 							{% endif %}
 						{% endfor %}
